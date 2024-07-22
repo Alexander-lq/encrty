@@ -10,11 +10,19 @@ import com.ugdsec.encrty.file.ZipChange;
 import com.ugdsec.encrty.service.EncrtyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.bouncycastle.crypto.engines.SM2Engine;
+import org.bouncycastle.crypto.params.ECDomainParameters;
+import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
+import org.bouncycastle.jcajce.provider.asymmetric.ec.BCECPrivateKey;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.bouncycastle.jce.spec.ECParameterSpec;
+import org.bouncycastle.jce.spec.ECPrivateKeySpec;
+import org.bouncycastle.util.encoders.Hex;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -134,4 +142,13 @@ public class EncrtyServiceImpl implements EncrtyService {
         return true;
     }
 
+    @Override
+    public String SM2encrty(EncrtyBO encrtyBO) throws Exception {
+        return SM2Utils.encrypt(encrtyBO.getPublicKey(), encrtyBO.getData());
+    }
+
+    @Override
+    public String SM2decrypt(EncrtyBO encrtyBO) throws Exception {
+        return SM2Utils.decrypt(encrtyBO.getPublicKey(), encrtyBO.getData());
+    }
 }

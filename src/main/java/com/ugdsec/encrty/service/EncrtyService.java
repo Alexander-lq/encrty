@@ -12,4 +12,8 @@ public interface EncrtyService{
 
     boolean upload(EncrtyBO encrtyBO) throws Exception;
 
+    String SM2encrty(EncrtyBO encrtyBO) throws Exception;
+
+    String SM2decrypt(EncrtyBO encrtyBO) throws Exception;
+
 }

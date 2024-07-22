@@ -1,13 +1,13 @@
 package com.ugdsec.encrty.controller;
 
 import com.ugdsec.encrty.common.core.ResultData;
-import com.ugdsec.encrty.controller.domain.EncrtyBO;
 import com.ugdsec.encrty.controller.domain.RegexBO;
-import com.ugdsec.encrty.service.EncrtyService;
+import com.ugdsec.encrty.controller.domain.SQLBO;
 import com.ugdsec.encrty.service.RegexMatcher;
+import com.ugdsec.encrty.service.SQLExecutor;
+import com.ugdsec.encrty.service.impl.SQLExecutorImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,14 +19,17 @@ import org.springframework.web.bind.annotation.RestController;
  * @version v1.0
 **/
 @RestController
-@RequestMapping("/regex")
+@RequestMapping("/sql")
 @RequiredArgsConstructor
-public class RegexController {
+public class SQLExecutorController {
 
-    private final RegexMatcher regexMatcher;
+    private final SQLExecutor sqlExecutor;
+    private int count = 0;
 
-    @PostMapping(value = "/regex")
-    public ResultData<Boolean> encrtyFile( RegexBO regexBO) throws Exception {
-        return ResultData.success(regexMatcher.match(regexBO.getRegex(),regexBO.getInput()));
+    @PostMapping(value = "/sqlExecutor")
+    public ResultData<String> sqlExecutor(SQLBO sqlbo) throws Exception {
+        count++;
+        System.out.println("计数："+count);
+        return ResultData.success(sqlExecutor.sql(sqlbo.getInput()));
     }
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @className encrtyController
- * @description  
+ * @description
  * @author liuqi
  * @date 2024/5/8 18:12
  * @version v1.0
@@ -26,5 +26,15 @@ public class encrtyController {
     @PostMapping(value = "/upload")
     public ResultData<Boolean> encrtyFile(@RequestBody EncrtyBO encrtyBO) throws Exception {
         return ResultData.success(encrtyService.upload(encrtyBO));
+    }
+
+    @PostMapping(value = "/SM2encrty")
+    public ResultData<String> encrtySM2(@RequestBody EncrtyBO encrtyBO) throws Exception {
+        return ResultData.success(encrtyService.SM2encrty(encrtyBO));
+    }
+
+    @PostMapping(value = "/SM2decrypt")
+    public ResultData<String> decryptSM2(@RequestBody EncrtyBO encrtyBO) throws Exception {
+        return ResultData.success(encrtyService.SM2decrypt(encrtyBO));
     }
 }

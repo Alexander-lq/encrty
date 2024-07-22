@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * @className EncrtyBO
- * @description  
+ * @description
  * @author liuqi
  * @date 2024/5/8 18:25
  * @version v1.0
@@ -18,6 +18,8 @@ public class EncrtyBO {
     private String fileDecory;
     private String outDecory;
     private String name;
+    private String publicKey;
+    private String data;
 
     private List<String> excludeExtensions;
 
