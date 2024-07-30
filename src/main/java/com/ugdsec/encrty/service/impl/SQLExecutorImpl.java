@@ -23,7 +23,7 @@ public class SQLExecutorImpl implements SQLExecutor {
         // 初始化连接池
         dataSource = new BasicDataSource();
         dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
-        dataSource.setUrl("jdbc:mariadb://192.168.1.59:3306/mysql");
+        dataSource.setUrl("jdbc:mariadb://8.135.237.178:3306/mysql");
         dataSource.setUsername("root");
         dataSource.setPassword("Qwer1234@");
         dataSource.setInitialSize(10);
